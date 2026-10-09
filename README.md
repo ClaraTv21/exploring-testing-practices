@@ -44,8 +44,42 @@ Escolha uma prática ou dado de teste relevante e explique com suas próprias pa
 
 ## Respostas
 
-Repositório: `<URL_DO_REPOSITÓRIO>`
+Repositório: `https://github.com/fastapi/fastapi`
 
-URL TestMiner: `<URL_NO_TESTMINER>`
+URL TestMiner: `https://andrehora.github.io/testminer/#fastapi/fastapi`
 
-Explicação: `<SUA_EXPLICAÇÃO>`
+Explicação:
+
+Analisei o FastAPI, um framework Python para criação de APIs com mais de 100 mil
+estrelas no GitHub. Na aba Overview, o TestMiner mostra 1805 arquivos de código-fonte
+(`source`) e 370 arquivos de teste, além de 95 test helpers, 13 benchmarks, 2 testes de
+CI e 1 smoke test. Ou seja, o projeto tem uma infraestrutura de testes bem diversificada,
+indo além dos testes comuns.
+
+**Prática escolhida: testes organizados por tema e alinhados com a documentação.**
+Em Test Location, vi que quase todos os testes ficam centralizados na pasta `tests/`
+(383 arquivos), separados do código da biblioteca (que fica na pasta `fastapi/`).
+Dentro dos testes, os nomes mais frequentes são `tutorial001` (54), `security` (33),
+`tutorial003` (27), `tutorial002` (24) e `response` (22). Os nomes `tutorial00X`
+sugerem que o projeto testa os exemplos usados na documentação (a pasta `docs_src`
+aparece com 32 arquivos), garantindo que o código mostrado aos usuários continue
+funcionando a cada versão. Já `security` e `response` mostram testes por funcionalidade
+do framework.
+
+Essa organização é útil por dois motivos: facilita encontrar o teste de cada
+funcionalidade e evita que a documentação fique desatualizada ou ensine algo que não
+funciona. A desvantagem é que muitos testes parecidos (como as várias versões de
+tutorial) aumentam o custo de manutenção quando algo muda.
+
+**Evolução e ferramentas.** Na aba Test History, a métrica `tests` cresce ao longo das
+versões: perto de zero na 0.1.11, cerca de 440 na 0.95.2 e cerca de 620 na 0.143.0.
+Isso mostra que a base de testes cresceu junto com o projeto, e não foi deixada para
+depois. Em Test Dependencies, o projeto usa o `pytest` com vários plugins: `pytest-cov`
+e `coverage` (cobertura de código), `pytest-xdist` (execução paralela), `pytest-timeout`
+(evita testes travados), `pytest-sugar` (saída mais legível), `pytest-codspeed`
+(benchmarks de desempenho) e `playwright` (testes de navegador).
+
+Concluo que o FastAPI trata testes como parte central do projeto: testa funcionalidades,
+exemplos da documentação e desempenho, e usa ferramentas para tornar a execução mais
+rápida e confiável. O que mais me chamou a atenção foi testar os exemplos da
+documentação, algo que eu não tinha pensado como prática de teste.
